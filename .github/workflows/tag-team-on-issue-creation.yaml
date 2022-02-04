@@ -1,0 +1,19 @@
+name: Tag eShopOnWeb Team
+
+on:
+  issues:
+    types: [created]
+
+jobs:
+  tag-a-team:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: devops-actions/issue-comment-tag@v0.1.0
+        name: Tag a eShopOnWeb team in an issue comment
+        with:
+           issue: ${{ github.event.issue.number }}
+           team: eShopOnWebTeam
+           owner: ${{ github.repository_owner }}
+           repo: ${{ github.repository }}
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
