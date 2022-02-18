@@ -6,9 +6,9 @@ using Xunit;
 namespace Microsoft.eShopWeb.FunctionalTests.WebRazorPages;
 
 [Collection("Sequential")]
-public class HomePageOnGet : IClassFixture<WebTestFixture>
+public class DetailPageOnGet : IClassFixture<WebTestFixture>
 {
-    public HomePageOnGet(WebTestFixture factory)
+    public DetailPageOnGet(WebTestFixture factory)
     {
         Client = factory.CreateClient();
     }
@@ -19,11 +19,11 @@ public class HomePageOnGet : IClassFixture<WebTestFixture>
     public async Task ReturnsHomePageWithProductListing()
     {
         // Arrange & Act
-        var response = await Client.GetAsync("/");
+        var response = await Client.GetAsync("/Product/18");
         response.EnsureSuccessStatusCode();
         var stringResponse = await response.Content.ReadAsStringAsync();
 
         // Assert
-        Assert.Contains("Turn Signal Light Bulb", stringResponse);
+        Assert.Contains("Synthetic Engine Oil", stringResponse);
     }
 }
